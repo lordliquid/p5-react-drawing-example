@@ -26,18 +26,19 @@ const header = {
 };
 
 const controls = {
+  display: "flex",
   background: "rgba(40,40,40,0.95)",
   position: "fixed",
-  marginTop: 50,
-  // width: "50%",
-  display: "flex",
   flexDirection: "column",
+  userSelect: "none",
   padding: 20,
+  marginTop: 50,
   cursor: "pointer"
 };
 
 const control = {
   display: "flex",
+  userSelect: "none",
   flexDirection: "column",
   color: "white",
   cursor: "pointer"
@@ -158,7 +159,6 @@ class App extends React.Component {
 
     p.draw = () => {
       p.background(255);
-
       // If it's time for a new point
       if (p.millis() > next && this.state.painting) {
         // Grab mouse position
@@ -211,12 +211,11 @@ class App extends React.Component {
   }
 
   changeLifetime(e) {
-    e.persist();
-    // console.log(sketch.name);
-    // sketch.
+    const { value } = e.target;
+    // e.persist();
     this.setState({
-      baseHue: e.target.value,
-      lifespan: e.target.value
+      baseHue: value,
+      lifespan: value
     });
   }
 
